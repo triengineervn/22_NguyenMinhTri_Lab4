@@ -9,11 +9,33 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Entypo } from "react-native-vector-icons";
+import { AirbnbRating } from "react-native-ratings";
 
 export default function Screen2() {
   const [textReview, setTextReview] = useState("");
+  const [rating, setRating] = useState("");
+  const getRating = (rating) => {
+    switch (rating) {
+      case 1:
+        console.log("Không hài lòng");
+        break;
+      case 2:
+        console.log("Chưa hài lòng");
+        break;
+      case 3:
+        console.log("Hài lòng");
+        break;
+      case 4:
+        console.log("Rất hài lòng");
+        break;
+      case 5:
+        console.log("Cực kỳ hài lòng");
+        break;
+    }
+  };
   const handleSend = () => {
-    console.log(textReview);
+    getRating(rating);
+    console.log("Nhận xét: " + textReview);
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -28,14 +50,19 @@ export default function Screen2() {
         </Text>
       </View>
       <View style={styles.review}>
-        <Text style={[styles.text, { marginTop: 40 }]}>Cực kỳ hài lòng</Text>
-        <View style={styles.listStars}>
-          <Entypo name="star" style={styles.customIcon}></Entypo>
-          <Entypo name="star" style={styles.customIcon}></Entypo>
-          <Entypo name="star" style={styles.customIcon}></Entypo>
-          <Entypo name="star" style={styles.customIcon}></Entypo>
-          <Entypo name="star" style={styles.customIcon}></Entypo>
-        </View>
+        <AirbnbRating
+          reviews={[
+            "Không hài lòng",
+            "Chưa hài lòng",
+            "Hài lòng",
+            "Rất hài lòng",
+            "Cực kỳ hài lòng",
+          ]}
+          reviewColor="#000"
+          reviewSize="20px"
+          size={40}
+          onFinishRating={setRating}
+        ></AirbnbRating>
       </View>
       <TouchableOpacity style={styles.btnAddPicture}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
