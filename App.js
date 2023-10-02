@@ -6,8 +6,8 @@ export default function App() {
   return (
     <>
       {/* <Screen1 /> */}
-      <Screen2 />
-      {/* <Screen3 /> */}
+      {/* <Screen2 /> */}
+      <Screen3 />
     </>
   );
 }
