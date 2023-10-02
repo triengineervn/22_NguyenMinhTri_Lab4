@@ -5,11 +5,16 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Entypo } from "react-native-vector-icons";
 
 export default function Screen2() {
+  const [textReview, setTextReview] = useState("");
+  const handleSend = () => {
+    console.log(textReview);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.listProducts}>
@@ -33,15 +38,31 @@ export default function Screen2() {
         </View>
       </View>
       <TouchableOpacity style={styles.btnAddPicture}>
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Entypo
             name="camera"
             style={[styles.customIcon, { color: "#000" }]}
           />
-          <Text style={[styles.text, { textAlign: "center" }]}>
-            Thêm hình ảnh
-          </Text>
+          <Text style={[styles.text, { marginStart: 10 }]}>Thêm hình ảnh</Text>
         </View>
+      </TouchableOpacity>
+      <TextInput
+        style={styles.textInput}
+        multiline
+        placeholderTextColor={"#C4C4C4"}
+        placeholder="Hãy chi sẻ những điều mà bạn thích về sản phẩm"
+        onChangeText={setTextReview}
+      ></TextInput>
+      <TouchableOpacity style={styles.btnSend} onPress={handleSend}>
+        <Text
+          style={{
+            color: "white",
+            fontSize: 20,
+            fontWeight: "700",
+          }}
+        >
+          Gửi
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -52,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
     margin: 15,
   },
   listProducts: {
@@ -64,7 +84,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#000",
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 700,
   },
   review: {
@@ -78,5 +98,32 @@ const styles = StyleSheet.create({
     fontSize: 40,
     margin: 5,
   },
-  btnAddPicture: {},
+  btnAddPicture: {
+    marginTop: 20,
+    width: "80%",
+    paddingVertical: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#1511EB",
+    alignItems: "center",
+  },
+  textInput: {
+    width: "80%",
+    height: "40%",
+    borderRadius: 5,
+    marginTop: 20,
+    padding: 11,
+    fontSize: 18,
+    fontWeight: 700,
+    borderWidth: 1,
+  },
+  btnSend: {
+    width: "80%",
+    backgroundColor: "#0D5DB6",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+    marginTop: 25,
+    borderRadius: 5,
+  },
 });
