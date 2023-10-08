@@ -30,7 +30,8 @@ export default function Screen4() {
   };
 
   const getDiscontAmount = () => {
-    setDiscontAmount(discountAmount + 0);
+    //callback function
+    setDiscontAmount(discountAmount);
   };
 
   const getTotalPrice = () => {
